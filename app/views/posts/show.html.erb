@@ -1,0 +1,29 @@
+<h1><%= @post.title %></h1>
+
+<p><%= @post.body %>
+
+<p><%= button_to "Edit", edit_post_path(@post), method: :get %>
+
+<p><%= button_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"} %>
+
+<div class="clear"></div>
+
+<h2>Add a Comment</h2>
+
+<%= form_for @comment, url: post_comments_path(@post) do |f| %>
+  <%= f.text_area :body, class: "comment" %>
+  <%= f.submit "Submit Comment" %>
+<% end %>
+
+<h2>Comments</h2>
+
+<table>
+<% @post.comments.order(created_at: :desc).each do |item| %>
+  <tr>
+  <td><%= item.body %></td>
+  <td><%= item.updated_at %></td>
+  <td><%= button_to "Edit", edit_post_comment_path(@post,item), method: :get %></td>
+  <td><%= button_to "Delete Comment", post_comment_path(@post,item), method: :delete, data: {confirm: "Are you sure?"} %></td>
+  </tr>
+<% end %>
+</table>

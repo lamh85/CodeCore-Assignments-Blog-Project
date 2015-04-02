@@ -1,0 +1,24 @@
+<% if @post.errors.any? %>
+  <ul>
+    <% @post.errors.messages.each do |key,value| %>
+      <li><%= value.to_s[2..-3] %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <p>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+  <p>
+  <%= f.submit %>
+<% end %>
+
+<style>
+  input[type="submit"] {
+    width: 330px;
+    margin-left: 50px;
+  }
+</style>

@@ -1,0 +1,42 @@
+<h1>All blog entries</h1>
+
+<p>
+
+<table cellspacing="0">
+<tr>
+<th>Title</th>
+<th>Body</th>
+<th>Created Date</th>
+<th>Actions</th>
+</tr>
+
+<!-- START LOOPING THROUGH EACH RECORD -->
+<% @post.each do |item| %>
+  <tr>
+
+  <td>
+    <%= link_to item.title, post_path(item) %>
+  </td>
+
+  <td>
+    <%= item.body.to_s[0..20] %>
+    <!-- Add elipsis to end --><% if item.body.to_s.length > 20 %>...<% end %>
+  </td>
+
+  <td>
+    <%= item.created_at.to_s[0..9] %>
+  </td>
+
+  <td class="cell-action">
+    <%#= link_to "Edit", edit_post_path(item), class: "edit-link-table" %>
+    <%= button_to "Edit", edit_post_path(item), method: :get %>
+    <%= button_to "Delete", post_path(item), method: :delete, data: {confirm: "Are you sure?"}, class: "button-delete" %>
+  </td>
+
+  </tr>
+<!-- STOP LOOPING THROUGH EACH RECORD -->
+<% end %>
+
+<style>
+
+</style>
