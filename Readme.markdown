@@ -4,7 +4,7 @@ I created this Rails application for my web development bootcamp training at Cod
 
 The bootcamp trains its students to be proficient in Ruby, Rails, HTML/CSS, Javascript, and Javascript libraries in 8 weeks.
 
-After each major lesson, our instructor adds more requirements to the project:
+After each major lesson, our instructor adds more requirements to the project as follows:
 
 # Getting Started
 
