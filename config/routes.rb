@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations"}
+
   get "/about" => "home#about"
 
   root "home#index"
@@ -8,7 +9,10 @@ Rails.application.routes.draw do
   # :posts must be PLURAL
   resources :posts do
     resources :comments
+    resources :favourites, only: [:create, :destroy]
   end
+
+  resources :favourites, only: [:index]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

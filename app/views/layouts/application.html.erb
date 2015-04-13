@@ -20,24 +20,27 @@
 <%= flash[:notice] || flash[:alert] %>
 
 <div id="bar-header">
-  | 
-  <%= link_to "Home", root_path %> |
-  <%= link_to "About", about_path %> |
-  <%= link_to "Blog Posts", posts_path %> |
-  <%= link_to "Create New Post", new_post_path %> |
+  <div id="navigation">
+    <%= link_to "Home", root_path %> |
+    <%= link_to "About", about_path %> |
+    <%= link_to "Blog Posts", posts_path %> |
+    <%= link_to "Create New Post", new_post_path %>
+  </div>
 
-  <% if user_signed_in? %>
-  <!-- current_user is a method from Devise -->
-    Welcome <%= current_user.name_display %> |
-    <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to "Log In", new_user_session_path %> |
-    <%= link_to "Register", new_user_registration_path %>
-  <% end %> |
+  <div id="links-login">
+    <% if user_signed_in? %>
+    <!-- current_user is a method from Devise -->
+      Hello, <%= current_user.name_display %> [<%= link_to "Log Out", destroy_user_session_path, method: :delete %>]
+      <br><%= link_to "My Favourites", favourites_path %>
+    <% else %>
+      <%= link_to "Log In", new_user_session_path %> |
+      <%= link_to "Register", new_user_registration_path %>
+    <% end %>
+  </div>
+  
 </div>
 
-<hr>
-<% if user_signed_in? %><%= current_user.class %><% end %>
+<div class="clear"></div>
 
 <div id="container">
 

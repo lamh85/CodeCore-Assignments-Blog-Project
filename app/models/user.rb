@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :nullify
 
 
+  has_many :favourites, dependent: :destroy
+  has_many :favourited_posts, through: :favourites, source: :posts
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -1,0 +1,6 @@
+<h1>My Favourite Blog Posts</h1>
+
+<% @favourites.each do |favourite| %>
+<!-- Each element in @favourite is record in Favourite model. The ".post" method returns the blog post associated with that Favourite mode. The ".title" method returns the blog post's title -->
+<p><%= link_to favourite.post.title, post_path(favourite.post) %></p>
+<% end %>

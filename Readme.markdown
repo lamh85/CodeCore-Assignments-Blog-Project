@@ -64,3 +64,7 @@ Associate records with the user model as per your ERD.
 # Redirection
 
 Find out how to redirect user to new post page after the signed up for the first time.
+
+# Favourite a Post
+
+Logged in users should be able to favourite a post. Then there should a be a link at the top right near their name where they can few the list of their favourite posts.

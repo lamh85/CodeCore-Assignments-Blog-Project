@@ -6,6 +6,7 @@
 <tr>
 <th>Title</th>
 <th>Body</th>
+<th>Created By</th>
 <th>Created Date</th>
 <th>Actions</th>
 </tr>
@@ -21,6 +22,15 @@
   <td>
     <%= item.body.to_s[0..20] %>
     <!-- Add elipsis to end --><% if item.body.to_s.length > 20 %>...<% end %>
+  </td>
+
+  <td>
+    <% if item.user_id %>
+      <% u = User.find item.user_id %>
+      <%= u.first_name %> <%= u.last_name %>
+    <% else %>
+      Unknown
+    <% end %>
   </td>
 
   <td>

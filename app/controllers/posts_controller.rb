@@ -38,6 +38,9 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
+
+    # If the user is logged in, load the "favourite" record from the Favourite model.
+    @favourite = @post.favourites.find_by_user_id(current_user.id) if user_signed_in?
   end
 
   def update

@@ -7,15 +7,20 @@ font-family: 'Roboto Condensed', sans-serif;*/
 /* LOGO FONT:
 font-family: 'Cousine',*/
 
+/*********************/
 /* TABLE OF CONTENTS */
 /*********************/
-/*  Containers*/
-/*  Fonts*/
-/*  Inputs*/
-/*  Tables and Cells*/
+/*  Containers */
+/*  Fonts */
+/*  Inputs */
+/*  Tables and Cells */
 
 /* CONTAINERS */
 /**************/
+
+body{
+  padding: 0px;
+}
 
 #logo {
   font-family: 'Cousine', 'Roboto Condensed', sans-serif;
@@ -30,6 +35,33 @@ font-family: 'Cousine',*/
   margin: 0px auto;
 }
 
+body{
+  margin-top: 75px;
+}
+
+#bar-header {
+  position: fixed;
+  background: white;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%);
+  padding: 1em 0;
+}
+
+#navigation, #links-login {
+  display: inline-block;
+}
+
+#navigation {
+  float: left;
+}
+
+#links-login {
+  float: right;
+  font-weight: bold;
+  text-align: right;
+}
+
 /* FONT */
 /********/
 
@@ -38,9 +70,12 @@ h1, h2 {
   font-weight: 400;
 }
 
+h1 {
+  font-size: 3em;
+}
+
 * {
   font-family: 'Open Sans', sans-serif;
-
 }
 
 /* INPUT */
@@ -52,7 +87,7 @@ label {
   vertical-align: top;
 }
 
-input[type="text"], textarea, input[type="submit"] {
+input[type="text"], textarea, input[type="submit"], input[type="email"], input[type="password"] {
   margin: 0px;
   font-size: 1em;
   border: 2px solid rgb(200,200,200);
@@ -85,10 +120,6 @@ textarea.comment {
   display: block;
   margin-bottom: 16px;
 }
-
-/*textarea {
-  display: block;
-}*/
 
 .button-delete {
   background: rgb(255,150,150);
