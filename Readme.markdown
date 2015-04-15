@@ -15,7 +15,7 @@ Here is what you need to do:
 * Setup empty Rails project (make sure it's version 4.2 or more)
 * Make sure that the project uses postgres database
 * Create controller "home" that handles home and static pages
-* Create a page "About" which has information about the tool (anything for now). 
+* Create a page "About" which has information about the tool (anything for now).
 * Add your photo and information in the about page (link to external photo of you for now)
 * Create a navigation bar that applies to all pages. The navigation bar must include links to "home" and "about" pages
 * Put all of your code on GitHub (or BitBucket)
@@ -51,7 +51,7 @@ Implement full CRUD operations for Comment resource in the Blog. Very similar to
 
 Each post needs comments so build a way to add comments to posts.
 
-Each comment must have "body". 
+Each comment must have "body".
 
 Make sure that on the post show page you list all the comments ordered by creation date. Most recent at the top.
 
@@ -68,3 +68,7 @@ Find out how to redirect user to new post page after the signed up for the first
 # Favourite a Post
 
 Logged in users should be able to favourite a post. Then there should a be a link at the top right near their name where they can few the list of their favourite posts.
+
+# Tagging
+
+Add ability to tag posts. Build this from scratch and don't use external gem.
