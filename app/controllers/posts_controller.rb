@@ -4,6 +4,14 @@ class PostsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
 
+  # CREATE
+  ########
+
+  # This is the GET method. Not to be confused with create.
+  def new
+    @post = Post.new
+  end
+
   # This is the POST method.
   # Not to be confused with def new, which is for GET.
   def create
@@ -19,21 +27,11 @@ class PostsController < ApplicationController
     end
   end
 
-  def destroy
-    @post.destroy
-    redirect_to posts_path, notice: "Blog entry deleted successfully!"
-  end
-
-  def edit
-  end
+  # READ
+  ######
 
   def index
     @post = Post.all.order(created_at: :desc)
-  end
-
-  # This is the GET method. Not to be confused with create.
-  def new
-    @post = Post.new
   end
 
   def show
@@ -43,6 +41,12 @@ class PostsController < ApplicationController
     @favourite = @post.favourites.find_by_user_id(current_user.id) if user_signed_in?
   end
 
+  # UPDATE
+  ########
+
+  def edit
+  end
+
   def update
     if @post.update(post_params)
       # SAME AS: redirect_to post_path(id: @post.id)
@@ -50,6 +54,14 @@ class PostsController < ApplicationController
     else
       render :edit
     end
+  end  
+
+  # DESTROY
+  #########
+
+  def destroy
+    @post.destroy
+    redirect_to posts_path, notice: "Blog entry deleted successfully!"
   end
 
   #######
@@ -60,7 +72,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, {tag_ids: []})  
   end
 
 end

@@ -12,6 +12,10 @@
   <p>
   <%= f.label :body %>
   <%= f.text_area :body %>
+
+  <p>
+  <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+
   <p>
   <%= f.submit %>
 <% end %>
