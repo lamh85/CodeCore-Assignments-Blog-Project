@@ -35,6 +35,19 @@ class PostsController < ApplicationController
   end
 
   def show
+    
+    # Create the string to display the tags
+    if @post.tags.count > 0
+      @tags_array = []
+      @post.tags.each do |tag|
+        @tags_array << tag.name
+      end
+      @tags_string = @tags_array.to_s[1..-2].gsub "\"",""
+    else
+      @tags_string = "none"
+    end
+
+    # Get a variable ready for a new comment
     @comment = Comment.new
 
     # If the user is logged in, load the "favourite" record from the Favourite model.

@@ -12,8 +12,10 @@ Rails.application.routes.draw do
     resources :favourites, only: [:create, :destroy]
   end
 
+  resources :tags
+
   resources :favourites, only: [:index]
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
