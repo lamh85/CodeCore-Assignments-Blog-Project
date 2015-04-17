@@ -73,6 +73,11 @@ Logged in users should be able to favourite a post. Then there should a be a lin
 
 Add ability to tag posts. Build this from scratch and don't use external gem.
 
+# Mailers
+
+Setup mailing with your Blog.
+
+Add a mailer that emails the user who created the blog post when someone comments on their post.
 
 # Delayed Jobs
 
