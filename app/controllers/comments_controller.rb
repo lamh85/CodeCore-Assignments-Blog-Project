@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       redirect_to post_path(@post), notice: "Comment posted!"
+      NewComment.notify_post_author(@comment).deliver_later
     else
       render "posts/show"
     end

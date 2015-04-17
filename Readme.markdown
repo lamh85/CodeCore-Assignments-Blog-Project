@@ -72,3 +72,9 @@ Logged in users should be able to favourite a post. Then there should a be a lin
 # Tagging
 
 Add ability to tag posts. Build this from scratch and don't use external gem.
+
+
+# Delayed Jobs
+
+* Setup Delayed Job
+* Move all the mailers to the background
