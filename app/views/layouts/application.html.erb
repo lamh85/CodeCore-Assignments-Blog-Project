@@ -2,15 +2,24 @@
 <html>
 <head>
   <title>PixelMonster</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
   <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400|Roboto+Condensed:300italic,400italic,700italic,700,300,400', media: 'all', 'data-turbolinks-track' => true %>
 
-<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400|Roboto+Condensed:300italic,400italic,700italic,700,300,400' rel='stylesheet' type='text/css'> -->
-
   <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Cousine:400,700,400italic,700italic', media: 'all', 'data-turbolinks-track' => true %>
 
-<!-- <link href='http://fonts.googleapis.com/css?family=Cousine:400,700,400italic,700italic' rel='stylesheet' type='text/css'> -->
+  <% if @external_layout == nil %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <% else %>
+    <%= stylesheet_link_tag 'external', media: 'all', 'data-turbolinks-track' => true %>
+  <% end %>
+
+
+  
+
+<!-- Removed these statements from application.scss:
+*= require_tree .
+*= require_self
+ -->
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -21,10 +30,10 @@
 
 <div id="bar-header">
   <div id="navigation">
-    <%= link_to "Home", root_path %> |
-    <%= link_to "About", about_path %> |
-    <%= link_to "Blog Posts", posts_path %> |
-    <%= link_to "Create New Post", new_post_path %>
+    <%= link_to "Home", root_path, class: "btn btn-default" %>
+    <%= link_to "About", about_path, class: "btn btn-default" %>
+    <%= link_to "Blog Posts", posts_path, class: "btn btn-default" %>
+    <%= link_to "Create New Post", new_post_path, class: "btn btn-default" %>
   </div>
 
   <div id="links-login">

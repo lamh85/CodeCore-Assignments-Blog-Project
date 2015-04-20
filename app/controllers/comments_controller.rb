@@ -11,19 +11,26 @@ class CommentsController < ApplicationController
     
     @comment.post = @post
 
-    if @comment.save
-      redirect_to post_path(@post), notice: "Comment posted!"
-      NewComment.notify_post_author(@comment).deliver_later
-    else
-      render "posts/show"
+    respond_to do |format|
+      if @comment.save
+        NewComment.notify_post_author(@comment).deliver_later
+        format.html { redirect_to post_path(@post), notice: "Comment posted!" }
+        format.js { render "create_success" }
+      else
+        format.html { render "posts/show" }
+        format.js { render "create_failure" }
+      end
     end
   end
 
   def destroy
     # @post = Post.find params[:post_id]
-    # @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to post_path(@post), notice: "Comment deleted"
+    respond_to do |format|
+      format.html { redirect_to post_path(@post), notice: "Comment deleted" }
+      format.js { render }
+    end
   end
 
   def update

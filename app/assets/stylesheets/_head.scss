@@ -1,0 +1,64 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ * Removed "require" statements from this file, per bootstrap instructions ;
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* CONTAINERS */
+/**************/
+
+body{
+  padding: 0px;
+}
+
+#logo {
+  font-family: 'Cousine', 'Roboto Condensed', sans-serif;
+}
+
+.clear {
+  clear: both;
+}
+
+#bar-header, #container {
+  width: 800px;
+  margin: 0px auto;
+}
+
+body{
+  margin-top: 130px;
+}
+
+#bar-header {
+  position: fixed;
+  background: white;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%);
+  padding: 1em 0;
+}
+
+#navigation, #links-login {
+  display: inline-block;
+}
+
+#navigation {
+  float: left;
+}
+
+#links-login {
+  float: right;
+  font-weight: bold;
+  text-align: right;
+}

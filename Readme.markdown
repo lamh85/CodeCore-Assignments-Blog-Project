@@ -55,6 +55,18 @@ Each comment must have "body".
 
 Make sure that on the post show page you list all the comments ordered by creation date. Most recent at the top.
 
+# Bootstrap
+
+Integrate Bootstrap with you Blog. 
+
+* Make sure that the following happens:
+* Bootstrap CSS files are included
+* Bootstrap JS files are included
+* There should be a nav bar
+* All of your content should be included in a "div" with "container" class
+* Convert all of the main links to use classes: btn with btn-primary, btn-info or btn-danger
+* Create two css groups one for the landing page called "external" and the other one is the default "application" which is used everywhere else.
+
 # User Authentication
 
 Add standard user authentication with Devise for your Blog. Make sure your user has first name and last name
@@ -83,3 +95,14 @@ Add a mailer that emails the user who created the blog post when someone comment
 
 * Setup Delayed Job
 * Move all the mailers to the background
+* Stretch: Setup a rake task that does the following:
+  * Make a summary (list) of all newly created comments that that day for posts
+  * Send an email with the summary to posts owners
+
+# AJAX
+
+Make creating comments for posts use AJAX so that the page doesn't reload.
+
+Make deleting a comment use AJAX
+
+Bonus: Enable comment editing / Updating with AJAX

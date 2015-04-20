@@ -1,0 +1,17 @@
+<tr id="<%= dom_id(item) %>">
+
+<td><%= item.body %></td>
+<td><%= item.updated_at %></td>
+<td>Published by 
+  <% if item.user_id %>
+    <% u = User.find item.user_id %>
+    <%= u.first_name %> <%= u.last_name %>
+  <% else %>
+    Unknown
+  <% end %>
+</td>
+
+<td><%= button_to "Edit", edit_post_comment_path(@post,item), method: :get %></td>
+<td><%= button_to "Delete Comment", post_comment_path(@post,item), remote: true, method: :delete, data: {confirm: "Are you sure?"} %></td>
+
+</tr>
