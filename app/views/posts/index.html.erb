@@ -38,9 +38,12 @@
   </td>
 
   <td class="cell-action">
-    <%#= link_to "Edit", edit_post_path(item), class: "edit-link-table" %>
-    <%= button_to "Edit", edit_post_path(item), method: :get %>
-    <%= button_to "Delete", post_path(item), method: :delete, data: {confirm: "Are you sure?"} %>
+    <% if current_user %>
+      <%= button_to "Edit", edit_post_path(item), method: :get %>
+      <%= button_to "Delete", post_path(item), method: :delete, data: {confirm: "Are you sure?"} %>
+    <% else %>
+      You must sign in to edit or delete this blog post.
+    <% end %>
   </td>
 
   </tr>

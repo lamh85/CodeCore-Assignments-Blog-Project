@@ -6,24 +6,28 @@
 
 <p><%= @post.body %>
 
-<!-- ACTIONS -->
 <h2>Actions</h2>
 
-<p><%= button_to "Edit", edit_post_path(@post), method: :get %>
+<% if current_user %>
+  <!-- ACTIONS -->
+    <p><%= button_to "Edit", edit_post_path(@post), method: :get %>
+    <p><%= button_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"} %>
+  <p>
+  <!-- FAVOURITE SECTION -->
+  <!-- If there is a record in the Favourite model -->
+  <% if @favourite %>
+    <%= link_to "Remove from your Favourites", post_favourite_path(@post,@favourite), method: :delete %>
+  <!-- If there is no record -->
+  <% else %>
+    <%= link_to "Add to Favourites", post_favourites_path(@post), method: :post %>
+  <% end %>
+<% else %>
+  <p>You must sign in to edit or delete this post, or to add this as a favourite.
+<% end %>
 
-<p><%= button_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"} %>
 
 <div class="clear"></div>
 
-<p>
-<!-- FAVOURITE SECTION -->
-<!-- If there is a record in the Favourite model -->
-<% if @favourite %>
-  <%= link_to "Remove from your Favourites", post_favourite_path(@post,@favourite), method: :delete %>
-<!-- If there is no record -->
-<% else %>
-  <%= link_to "Add to Favourites", post_favourites_path(@post), method: :post %>
-<% end %>
 
 <!-- COMMENTS - CREATE -->
 

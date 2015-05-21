@@ -11,7 +11,11 @@
   <% end %>
 </td>
 
-<td><%= button_to "Edit", edit_post_comment_path(@post,item), method: :get %></td>
-<td><%= button_to "Delete Comment", post_comment_path(@post,item), remote: true, method: :delete, data: {confirm: "Are you sure?"} %></td>
+<% if current_user %>
+  <td><%= button_to "Edit", edit_post_comment_path(@post,item), method: :get %></td>
+  <td><%= button_to "Delete Comment", post_comment_path(@post,item), remote: true, method: :delete, data: {confirm: "Are you sure?"} %></td>
+<% else %>
+  <td>You must sign in to edit or delete this comment.</td>
+<% end %>
 
 </tr>
