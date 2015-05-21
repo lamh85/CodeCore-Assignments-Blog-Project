@@ -6,6 +6,7 @@
 <tr>
 <th>Title</th>
 <th>Body</th>
+<th>Created By</th>
 <th>Created Date</th>
 <th>Actions</th>
 </tr>
@@ -24,13 +25,22 @@
   </td>
 
   <td>
+    <% if item.user_id %>
+      <% u = User.find item.user_id %>
+      <%= u.first_name %> <%= u.last_name %>
+    <% else %>
+      Unknown
+    <% end %>
+  </td>
+
+  <td>
     <%= item.created_at.to_s[0..9] %>
   </td>
 
   <td class="cell-action">
     <%#= link_to "Edit", edit_post_path(item), class: "edit-link-table" %>
     <%= button_to "Edit", edit_post_path(item), method: :get %>
-    <%= button_to "Delete", post_path(item), method: :delete, data: {confirm: "Are you sure?"}, class: "button-delete" %>
+    <%= button_to "Delete", post_path(item), method: :delete, data: {confirm: "Are you sure?"} %>
   </td>
 
   </tr>

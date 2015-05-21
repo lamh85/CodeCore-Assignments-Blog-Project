@@ -1,0 +1,13 @@
+<h1>Manage Tags</h1>
+
+<% @tags.each do |tag| %>
+  <!-- <p><%= tag.name %> -->
+
+  <%= form_for tag do |f| %>
+    <%= tag.name %>
+    <%= f.text_field :name %>
+    <%= f.submit %>
+  <% end %>
+  </p>
+
+<% end %>

@@ -1,0 +1,12 @@
+/* This @import retrieves CSS code that is also used by external.scss */
+@import "head";
+
+h1 {
+  font-family: Arial;
+}
+
+#poster {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}

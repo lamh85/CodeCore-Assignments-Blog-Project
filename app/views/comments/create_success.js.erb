@@ -1,0 +1,6 @@
+// Prepend a new comment
+$('#list-comments').prepend(' <%= j render partial: "/comments/comment", locals: {item: @comment} %> ').fadeIn();
+
+// Reload the form
+<% @comment = Comment.new %>
+$('#form-comment').html(' <%= j render "/comments/form" %> ');

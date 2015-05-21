@@ -1,0 +1,13 @@
+<p>Hello <%= @user.name_display %>,</p>
+
+<p>You received a new comment on your blog post</p>
+
+<p>Blog title: <%= link_to @post.title, post_url(@post) %></p>
+
+<p>Comment:</p>
+
+<p><%= @comment.body %></p>
+
+<p>Regards,</p>
+
+<p>The Pixel Monster Team</p>

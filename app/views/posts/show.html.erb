@@ -1,6 +1,13 @@
 <h1><%= @post.title %></h1>
 
+<!-- Show the list of tags -->
+<p>Tags: <%= @tags_string %>
+
+
 <p><%= @post.body %>
+
+<!-- ACTIONS -->
+<h2>Actions</h2>
 
 <p><%= button_to "Edit", edit_post_path(@post), method: :get %>
 
@@ -8,22 +15,33 @@
 
 <div class="clear"></div>
 
+<p>
+<!-- FAVOURITE SECTION -->
+<!-- If there is a record in the Favourite model -->
+<% if @favourite %>
+  <%= link_to "Remove from your Favourites", post_favourite_path(@post,@favourite), method: :delete %>
+<!-- If there is no record -->
+<% else %>
+  <%= link_to "Add to Favourites", post_favourites_path(@post), method: :post %>
+<% end %>
+
+<!-- COMMENTS - CREATE -->
+
 <h2>Add a Comment</h2>
 
-<%= form_for @comment, url: post_comments_path(@post) do |f| %>
-  <%= f.text_area :body, class: "comment" %>
-  <%= f.submit "Submit Comment" %>
+<% if current_user %>
+  <div id="form-comment">
+    <%= render "/comments/form" %>
+  </div>
+<% else %>
+  <p>You must log in to add a comment</p>
 <% end %>
 
 <h2>Comments</h2>
 
-<table>
+<!-- COMMENTS - DISPLAY -->
+<table id="list-comments">
 <% @post.comments.order(created_at: :desc).each do |item| %>
-  <tr>
-  <td><%= item.body %></td>
-  <td><%= item.updated_at %></td>
-  <td><%= button_to "Edit", edit_post_comment_path(@post,item), method: :get %></td>
-  <td><%= button_to "Delete Comment", post_comment_path(@post,item), method: :delete, data: {confirm: "Are you sure?"} %></td>
-  </tr>
+  <%= render partial: "/comments/comment", locals: {item: item} %>
 <% end %>
 </table>
