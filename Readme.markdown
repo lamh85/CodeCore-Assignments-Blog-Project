@@ -106,3 +106,7 @@ Make creating comments for posts use AJAX so that the page doesn't reload.
 Make deleting a comment use AJAX
 
 Bonus: Enable comment editing / Updating with AJAX
+
+# My own additions (not required by the assignment)
+
+* Testing with Rspec and FactoryGirl - currently under construction

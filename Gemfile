@@ -53,5 +53,10 @@ group :development, :test do
   gem 'spring'
 
   gem "letter_opener"
+
+  gem 'rspec-rails', '~> 3.0'
+
+  # Documentation: http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
+  gem "factory_girl_rails", "~> 4.0"
 end
 
