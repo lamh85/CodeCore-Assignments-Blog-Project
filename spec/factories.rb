@@ -7,12 +7,11 @@ FactoryGirl.define do
     body "I am a body"
   end
 
+  factory :user do
+    first_name "some first name"
+    last_name "some last name"
+    password "password"
+    sequence(:email) {|n| "some_email#{n}@gmail.com" }
+  end
+
 end
-
-
-#         :id => :integer,
-#      :title => :string,
-#       :body => :text,
-# :created_at => :datetime,
-# :updated_at => :datetime,
-#    :user_id => :integer

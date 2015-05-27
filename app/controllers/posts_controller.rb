@@ -15,12 +15,10 @@ class PostsController < ApplicationController
   # This is the POST method.
   # Not to be confused with def new, which is for GET.
   def create
-    # @post = Post.new(post_params)
     @post = current_user.posts.new(post_params)
 
     if @post.save
       flash[:notice] = "Post successfully saved!"
-      # redirect_to post_path(id: @post.id)
       redirect_to posts_path(@post)
     else
       render :new
