@@ -7,9 +7,19 @@ RSpec.describe PostsController, type: :controller do
 
   describe "#create: " do
     context "user is signed in: " do
+      before { login(user) }
 
-      def valid_request
-      end
+      context "with valid parameters: " do
+
+        def valid_request
+          post :create, :post
+        end
+
+        it "creates a new post" do
+          expect { valid_request }.to change {Post.count}.by(1)
+        end # it "creates a new post"
+
+      end # context "with valid parameters"
 
     end # context "user is signed in: "
 

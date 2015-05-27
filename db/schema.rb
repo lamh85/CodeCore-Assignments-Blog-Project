@@ -16,22 +16,6 @@ ActiveRecord::Schema.define(version: 20150417053140) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "add_user_references_to_comments", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "add_user_references_to_comments", ["user_id"], name: "index_add_user_references_to_comments_on_user_id", using: :btree
-
-  create_table "add_user_references_to_posts", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "add_user_references_to_posts", ["user_id"], name: "index_add_user_references_to_posts_on_user_id", using: :btree
-
   create_table "categories", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
@@ -130,8 +114,6 @@ ActiveRecord::Schema.define(version: 20150417053140) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "add_user_references_to_comments", "users"
-  add_foreign_key "add_user_references_to_posts", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "favourites", "posts"
