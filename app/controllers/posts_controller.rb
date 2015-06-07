@@ -19,7 +19,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:notice] = "Post successfully saved!"
-      redirect_to posts_path(@post)
+      redirect_to posts_path
     else
       render :new
     end
@@ -30,10 +30,10 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order(created_at: :desc)
-    respond_to do |format|
-      format.html
-      format.json
-    end    
+    # respond_to do |format|
+    #   format.html
+    #   format.json
+    # end
   end
 
   def show
