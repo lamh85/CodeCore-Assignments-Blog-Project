@@ -107,6 +107,7 @@ Make deleting a comment use AJAX
 
 Bonus: Enable comment editing / Updating with AJAX
 
-# My own additions (not required by the assignment)
+# My own additions after graduation (not required by the assignment)
 
-* Testing with Rspec and FactoryGirl - currently under construction
+* Testing with Rspec and FactoryGirl
+* Rendering a JSON file that lists blog posts
