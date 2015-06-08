@@ -55,8 +55,5 @@ group :development, :test do
   gem "letter_opener"
 
   gem 'rspec-rails'
-
-  # Documentation: http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
-  gem "factory_girl_rails"
 end
 

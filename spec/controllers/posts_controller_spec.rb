@@ -17,6 +17,7 @@ RSpec.describe PostsController, type: :controller do
           user # Calls the method let(:user)
           login(user)
           post_2 # Calls the method let(:post_2)
+          # post :create, post: {title: "Some title", body: "Some post"}
         end
 
         it "creates a new post" do
@@ -25,7 +26,8 @@ RSpec.describe PostsController, type: :controller do
         end # it "creates a new post"
 
         it "redirects to index page" do
-          expect(valid_request).to redirect_to(posts_path)
+          post_3 = build(:post)
+          expect(post_3.save).to redirect_to(posts_path)
         end
 
         it "creates a flash notice" do
