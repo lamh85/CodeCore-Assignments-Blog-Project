@@ -13,5 +13,4 @@ FactoryGirl.define do
     sequence(:body) {|n| "I am a body #{n}"}
   end
 
-
 end
