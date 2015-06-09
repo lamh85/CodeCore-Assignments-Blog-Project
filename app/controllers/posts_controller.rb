@@ -69,6 +69,7 @@ class PostsController < ApplicationController
       redirect_to post_path(@post), notice: "Post successfully updated!"
     else
       render :edit
+      flash[:alert] = "We could not update this post."
     end
   end  
 

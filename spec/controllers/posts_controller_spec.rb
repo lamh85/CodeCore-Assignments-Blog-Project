@@ -67,13 +67,43 @@ RSpec.describe PostsController, type: :controller do
       before { sign_in(user) }
         context "with valid parameters," do
           before do
-            patch :update, id: post_1.id, post: {title: "some title", body: "some body", user_id: user}
+            patch :update, id: post_1.id, post: {title: "some new title", body: "some new body", user_id: user}
           end # before do: update existing record
 
-          it "redirects to the post's 'show' page," do
+          it "updates the record with a new title" do
+            expect(post_1.reload.title).to eq("some new title")
+          end # it updates with new values
+
+          it "updates the record with a new body" do
+            expect(post_1.reload.body).to eq("some new body")
+          end # it updates with new values
+
+          it "redirects to the post's 'show' page" do
             expect(response). to redirect_to(post_path(post_1))
           end # it redirects to "show" page
+
+          it "renders a flash message" do
+            expect(flash[:notice]).to eq("Post successfully updated!")
+          end # it renders a flash message
         end # context "with valid parameters,"
+
+        context "withOUT valid parameters," do
+          before do
+            patch :update, id: post_1.id, post: {title: nil}
+          end
+
+          it "the record's values stay the same" do
+            expect(post_1.reload.title).to include("I am a title")
+          end # it: the record's values stay the same
+
+          it "renders the 'edit' page" do
+            expect(response).to render_template(:edit)
+          end # it: renders the "edit" page
+
+          it "renders a flash alert message" do
+            expect(flash[:alert]).to eq("We could not update this post.")
+          end # it: renders a flash alert message
+        end # context: withOUT valid parameters
     end # context "user is signed in"
   end # describe "#update"
 
