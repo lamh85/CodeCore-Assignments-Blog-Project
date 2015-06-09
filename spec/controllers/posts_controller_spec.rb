@@ -1,11 +1,11 @@
 require 'rails_helper'
-require 'byebug'
 
 RSpec.describe PostsController, type: :controller do
   let(:user) { create(:user) } # create() is a method from FactoryGirl
-  let(:post_1) { create(:post) }
+  let(:post_1) { create(:post, user: user) }
   let(:post_2) { create(:post, user: user)}
 
+  # In case I need a vanilla method for logging in the user:
   # def login(user)
   #   request.session[:user_id] = user.id
   # end
@@ -56,12 +56,25 @@ RSpec.describe PostsController, type: :controller do
           expect(flash[:alert]).to eq("We could not post your blog")
         end
 
-      end # context "without valid parameters"
+      end # context "withOUT valid parameters"
 
     end # context "user is signed in: "
 
-
   end # describe "#create"
 
+  describe "#update," do
+    context "user is signed in," do
+      before { sign_in(user) }
+        context "with valid parameters," do
+          before do
+            patch :update, id: post_1.id, post: {title: "some title", body: "some body", user_id: user}
+          end # before do: update existing record
+
+          it "redirects to the post's 'show' page," do
+            expect(response). to redirect_to(post_path(post_1))
+          end # it redirects to "show" page
+        end # context "with valid parameters,"
+    end # context "user is signed in"
+  end # describe "#update"
 
 end # RSpec.describe
