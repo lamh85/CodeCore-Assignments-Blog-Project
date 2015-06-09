@@ -58,5 +58,7 @@ group :development, :test do
 
   # Documentation: http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md
   gem "factory_girl_rails"
+
+  gem 'capybara'
 end
 

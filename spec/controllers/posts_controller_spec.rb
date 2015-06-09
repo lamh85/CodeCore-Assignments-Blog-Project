@@ -28,16 +28,35 @@ RSpec.describe PostsController, type: :controller do
         it "redirects to index page" do
           valid_request
           expect(response).to redirect_to(posts_path)
-          puts "Valid request is #{valid_request}"
         end
 
         it "creates a flash notice" do
           valid_request
           expect(flash[:notice]).to eq("Post successfully saved!")
-          byebug
         end
 
       end # context "with valid parameters"
+
+      context "withOUT valid parameters," do
+        def invalid_request
+          post :create, { post: {title: nil, user_id: user }}
+        end
+
+        it "does NOT add a new record in database" do
+          expect{invalid_request}.to change {Post.count}.by(0)
+        end
+
+        it "renders the 'new post' page" do
+          invalid_request
+          expect(response).to render_template(:new)
+        end
+
+        it "creates a flash alert" do
+          invalid_request
+          expect(flash[:alert]).to eq("We could not post your blog")
+        end
+
+      end # context "without valid parameters"
 
     end # context "user is signed in: "
 

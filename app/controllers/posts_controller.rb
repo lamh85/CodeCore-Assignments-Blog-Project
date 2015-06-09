@@ -21,6 +21,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Post successfully saved!"
       redirect_to posts_path
     else
+      flash[:alert] = "We could not post your blog"
       render :new
     end
   end

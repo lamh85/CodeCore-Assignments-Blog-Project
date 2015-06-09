@@ -9,6 +9,7 @@ class Post < ActiveRecord::Base
 
   validates :title, presence: { message: "Your title is blank. Please provide one." }
   validates :title, uniqueness: { message: "There is already a title like this. Please provide a different one." }
+  validates :user_id, presence: { message: "This post must have an author." }
 
   has_many :favourites, dependent: :destroy
   # Create a method: .favourited_users
